@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from "react";
 import "./styles.css";
 
 interface Props {
@@ -20,16 +20,16 @@ const inputRef = useRef<HTMLInputElement>(null);
             inputRef.current?.blur();
             }}
     >
-        <input type="input" 
-                placeholder='enter task here' 
-                className='inputBox' 
-                value={todo}
-                onChange={
-                    (e)=>setTodo(e.target.value)
-                }
+      <input
+        type="text"
+        placeholder="Enter a Task Here !!"
+        value={todo}
+        ref={inputRef}
+        onChange={(e) => setTodo(e.target.value)}
+        className="inputBox"
+      />
             
-                
-                />
+              
 
 
 
