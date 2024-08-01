@@ -1,32 +1,44 @@
-import React,{useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import InputFeild from './components/InputFeild';
-import {Todo} from "./model";
-import TodoList from "./components/TodoList";
+import InputField from './components/todo/InputFeild';
+import { Todo } from "./model";
+import TodoList from "./components/todo/TodoList";
+import LoginForm from './components/login/LoginForm';
+import RegisterForm from './components/register/RegisterForm';
+import TodoPage from './components/todo/TodoPage';
 
-const App:React.FC =() =>{
-  const [todo,setTodo] = useState<string>("");
-  const [todos,setTodos] = useState<Todo[]>([]);
-
-  const handleAdd = (e: React.FormEvent) =>{
-    e.preventDefault();
-
-    if(todo){
-      setTodos([...todos,{id: Date.now(),todo:todo,isDone:false}]);
-      setTodo("")
-    }
-  };
-
-  console.log(todo);
-
+const App: React.FC = () => {
+ 
   return (
-    
-    <div className="App">
-      <span className='heading'>TASK TODO</span>
-      <InputFeild todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-      <TodoList todos={todos} setTodos={setTodos} />
-       
-    </div>
-    );
+    <Router>
+      <Routes>
+        {/* <Route path="/" element={
+          user ? (
+            <Navigate to="/todo" replace />
+          ) : (
+            isLogin ? (
+              <LoginForm onSwitchToRegister={switchForm} onLoginSuccess={handleLoginSuccess} />
+            ) : (
+              <RegisterForm onSwitchToLogin={switchForm} />
+            )
+          )
+        } /> */}
+        <Route path="/" element={
+          <LoginForm />
+        } />
+        <Route path="/register" element={
+          <RegisterForm />
+        } />
+        <Route path="/todo" element={
+          <TodoPage />
+        } />
+        {/* <Route path="/todo" element={
+          user ? <TodoApp /> : <Navigate to="/" replace />
+        } /> */}
+      </Routes>
+    </Router>
+  );
 }
+
 export default App;

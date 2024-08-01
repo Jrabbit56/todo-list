@@ -16,6 +16,8 @@ const inputRef = useRef<HTMLInputElement>(null);
     <form
             className="input"
             onSubmit={(e) => {
+              console.log("aaa");
+              
             handleAdd(e);
             inputRef.current?.blur();
             }}
@@ -28,11 +30,6 @@ const inputRef = useRef<HTMLInputElement>(null);
         onChange={(e) => setTodo(e.target.value)}
         className="inputBox"
       />
-            
-              
-
-
-
         <button className='inputSubmit' type='submit'>Go</button>
     </form>
   )

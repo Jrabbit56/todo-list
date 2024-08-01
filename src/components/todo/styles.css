@@ -1,6 +1,7 @@
 .input{
     display: flex;
     width: 95%;
+    max-width: 800px;
     position:relative;
     align-items:center;
 }
